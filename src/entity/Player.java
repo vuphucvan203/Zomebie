@@ -15,18 +15,21 @@ public class Player extends Entity {
 
     public final int screenX;
     public final int screenY;
+    public int hasKey = 0;
 
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
 
-        screenX = gp.screenWidth/2 - (gp.tileSize/2);
-        screenY = gp.screenHeigh/2 - (gp.tileSize/2);
+        screenX = gp.screenWidth/2 - (gp.entitySize/2);
+        screenY = gp.screenHeigh/2 - (gp.entitySize/2);
 
         solidArea = new Rectangle();
         solidArea.x = 57;
         solidArea.y = 92;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 28;
         solidArea.height = 46;
         setDefaultValue();
@@ -80,6 +83,11 @@ public class Player extends Entity {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            //CHECK OBJECT COLISITON
+            int objIndex = gp.cChecker.checkObject(this,true);
+            pickUpObject(objIndex);
+//            openDoor(objIndex);
+
             //IF COLLISION IS FALSE, PLAYER CAN MOVE
             if(collisionOn == false)
             {
@@ -128,6 +136,50 @@ public class Player extends Entity {
             spriteNum = 1;
         }
     }
+    public void pickUpObject(int i)
+    {
+        if(i != 999)
+        {
+            String objectName = gp.obj[i].name;
+            if(objectName == "Axe")
+            {
+//                gp.playSE(1);
+                gp.obj[i] = null;
+
+            }
+            if(objectName == "Door")
+            {
+//                gp.playSE(2);
+                gp.obj[i] = null;
+            }
+
+//            switch(objectName)
+//            {
+//                case "Axe":
+//                    hasKey++;
+//                    gp.obj[i] = null;
+//                    System.out.println("Key:"+hasKey);
+//                    break;
+//                case "Door":
+//                    if(hasKey > 0)
+//                    {
+//                        gp.obj[i] = null;
+//                        hasKey--;
+//                    }
+//                    System.out.println("Key:"+hasKey);
+//                    break;
+//            }
+        }
+    }
+//    public void openDoor(int i)
+//    {
+//        String objectName = gp.obj[i].name;
+//        if(objectName == "Door")
+//        {
+//            gp.playSE(2);
+//            gp.obj[i] = null;
+//        }
+//    }
 
     public void draw(Graphics2D g2) {
         BufferedImage image = null;

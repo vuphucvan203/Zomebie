@@ -1,5 +1,6 @@
 package main;
 
+import object.OBJ_Axe;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 
@@ -14,17 +15,23 @@ public class AccessSetter {
 
     public void setObject()
     {
-        gp.obj[0] = new OBJ_Door();
-        gp.obj[0].worldX = 15 * gp.tileSize;
-        gp.obj[0].worldY = 15 * gp.tileSize;
+//        gp.obj[0] = new OBJ_Door();
+//        gp.obj[0].worldX = 15 * gp.tileSize;
+//        gp.obj[0].worldY = 15 * gp.tileSize;
+//
+//        gp.obj[1] = new OBJ_Chest();
+//        gp.obj[1].worldX = 20 * gp.tileSize;
+//        gp.obj[1].worldY = 20 * gp.tileSize;
+//
+//        gp.obj[2] = new OBJ_Chest();
+//        gp.obj[2].worldX = 21 * gp.tileSize;
+//        gp.obj[2].worldY = 21 * gp.tileSize;
+//
+//        gp.obj[3] = new OBJ_Axe();
+//        gp.obj[3].worldX = 19 * gp.tileSize;
+//        gp.obj[3].worldY = 18 * gp.tileSize;
 
-        gp.obj[1] = new OBJ_Chest();
-        gp.obj[1].worldX = 20 * gp.tileSize;
-        gp.obj[1].worldY = 20 * gp.tileSize;
 
-        gp.obj[2] = new OBJ_Chest();
-        gp.obj[2].worldX = 21 * gp.tileSize;
-        gp.obj[2].worldY =  20 * gp.tileSize;
     }
 
 }
